@@ -1,0 +1,82 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #000000f8;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  } */
+  
+  /* body {
+    background: #000;
+    color: #000;
+  } */
+  
+  .swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .mySwiper2 {
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    /* border: 2px solid green; */
+  }
+  
+  /* .mySwiper {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  } */
+  
+  /* .mySwiper .swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+  } */
+  
+  /* .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+  } */
+  
+  .swiper-slide{
+    height: 100vh;
+    width: 100%; 
+   display: flex;
+    place-content: center;
+  }
+ .swiper-slide img {
+    width: 100%; 
+  }
+
+  .swipe-img {
+    height: inherit;
+    width: 100%;
+    max-width: 850px;
+    z-index: -1; /* Move the image below other content within the container */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 90%, transparent); /* Apply the gradient mask */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 90%, transparent); 
+  }
+ 

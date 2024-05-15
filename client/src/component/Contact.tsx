@@ -172,7 +172,8 @@ const Contact:React.FC = () => {
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.9607857719006!2d13.527682976002067!3d52.534143672064786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84c06ac5ea8e3%3A0x199370b6a20f7797!2sPyramidenring%208a%2C%2012681%20Berlin!5e0!3m2!1sen!2sde!4v1709215702889!5m2!1sen!2sde"
                     width="600" height="450" style={{border: "0"}} allowFullScreen={false} loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    referrerPolicy="no-referrer-when-downgrade">
+                    </iframe>
 
             </div>
         </div>
