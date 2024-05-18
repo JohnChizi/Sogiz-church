@@ -22,7 +22,7 @@ const SwiperGallery: React.FC = () => {
   return (
     <React.Fragment>
       <Swiper
-        loop={true}
+        // loop={true}
         spaceBetween={10}
         pagination={{
             clickable: true,

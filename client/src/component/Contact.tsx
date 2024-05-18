@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosInstance from './axioConfig/axiosinstance';
 import React, { ChangeEvent, useState } from 'react'
 
 interface  Input {
@@ -28,7 +29,7 @@ const Contact:React.FC = () => {
 
      
 
-    const handleInputChange = (fieldName, value) => {
+    const handleInputChange = (fieldName: string, value) => {
         // const { name, value } = e.target;
 
           setInput(prevState => ({ ...prevState, [fieldName]: value }));
@@ -58,26 +59,85 @@ const Contact:React.FC = () => {
         
         e.preventDefault();
         console.log(input)
+
+
+            // beginning
+
+            // axios configuration
+            // axios.defaults.baseURL = import.meta.env.VITE_APP_API;
+
+            //  const fetchData = async () => {
+            //    try {
+            //      setLoading(true);
+            //      await axios.get("/all-property").then((response) => {
+            //        if (response?.data?.data) {
+            //          let dataArr = response?.data?.data;
+            //          if (dataArr) {
+            //            let cc = dataArr?.map((data) => {
+            //              data.image = JSON.parse(data?.image);
+            //              data.price = Number(data.price);
+            //              data.description = JSON.parse(data?.description);
+            //              return data;
+            //            });
+
+            //            setLand(cc);
+            //            setLoading(false);
+            //          }
+            //        }
+            //      });
+            //    } catch (error) {
+            //      setLoading(false);
+            //      console.error("Error fetching data:", error);
+            //    }
+            //  };
+
+            // end
         
-        try {
-              const response = await axios.post('/api/v1/email/sendEmail', input);
-          console.log(response)
-          if (response.data.message) {
-            alert('Email sent');
-            setInput(prevState => ({ ...prevState, ...inputProp }));
-          } else {
-            alert('Failed to send!');
-          }
-        } catch (err) {
-          console.error(err.response.data);
-          if(err.response.data.missingFields){
+
+
+            console.log(import.meta.env.VITE_API_URL)
+        
+        // try {
+            //   const response = await axiosInstance.post('/v1/email/sendEmail', input);
+            axiosInstance.post('/v1/email/sendEmail', input)
+            .then(response => {
+
+                console.log(response)
+              //   if (response.data.message) {
+                  if (response.data.successs) {
+                  alert('Email sent');
+                  setInput(prevState => ({ ...prevState, ...inputProp }));
+                  setErrorFormat(null)
+              //   } else {
+              //     alert('Failed to send!');
+              //   }
+              // } catch (err) {
+              //   console.error(err.data.missingFields);
+              // //   if(err.response.data.missingFields){
+              //     if(err.data.missingFields){
+                  
+              //       setMissingFields([...err.data.missingFields])
+              //     }
+              //     if(err.data.emailError || err.data.phoneNumberError ){
+              //         setErrorFormat({...err.data})
+              //     }
+              // }
+                  }
+                  
+                  if(response.data.missingFields){
+                      setMissingFields([...response.data.missingFields])
+                  }
+                  if(response.data.emailError || response.data.phoneNumberError ){
+                      setErrorFormat({...response.data})
+                  }
+            })
+            .catch(err => {
+
+                console.error(err)
+            })
             
-              setMissingFields([...err.response.data.missingFields])
-            }
-            if(err.response.data.emailError || err.response.data.phoneNumberError ){
-                setErrorFormat({...err.response.data})
-            }
-        }
+        // } catch (err) {
+        // }
 
         //empty input tags on submission
     };
